@@ -1,0 +1,11 @@
+[template]
+src = "sphinx.conf.tmpl"
+dest = "/etc/sphinxsearch/_sphinx.conf"
+mode = "0644"
+
+keys = [
+    "/mysql/host",
+    "/mysql/db",
+    "/mysql/user",
+    "/mysql/password"
+]
