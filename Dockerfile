@@ -32,6 +32,7 @@ EXPOSE 9306
 ENV LANG=C
 
 RUN chown nobody:nogroup /var/lib/sphinxsearch/data
+RUN chown nobody:root /var/run/sphinxsearch && chmod 700 /var/run/sphinxsearch
 COPY confd/sphinx.toml /etc/confd/conf.d/
 COPY conf/_sphinx_searchd.conf /etc/sphinxsearch/
 COPY docker-entrypoint.sh /
