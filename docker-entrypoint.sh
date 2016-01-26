@@ -7,7 +7,7 @@ cat /etc/sphinxsearch/_sphinx.conf /etc/sphinxsearch/_sphinx_searchd.conf > /etc
 
 if [ "$1" = 'sphinx' ]; then
     echo "Starting sphinx in foreground."
-    exec gosu nobody:nogroup /usr/bin/searchd --console --config /etc/sphinxsearch/sphinx.conf
+    exec gosu nobody:nogroup /usr/bin/searchd --console --config /etc/sphinxsearch/sphinx.conf --pidfile=/var/run/sphinxsearch/searchd.pid
 fi
 
 if [ "$1" = 'index' ]; then
@@ -16,7 +16,7 @@ if [ "$1" = 'index' ]; then
     else
         indexes="${@:2}"
     fi
-    if [ -f /var/run/searchd.pid ]; then
+    if [ -f /var/run/sphinxsearch/searchd.pid ]; then
         args="--rotate"
     fi
     echo "Start full indexing."
