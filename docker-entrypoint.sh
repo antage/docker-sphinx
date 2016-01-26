@@ -7,7 +7,7 @@ cat /etc/sphinxsearch/_sphinx.conf /etc/sphinxsearch/_sphinx_searchd.conf > /etc
 
 if [ "$1" = 'sphinx' ]; then
     echo "Starting sphinx in foreground."
-    exec gosu nobody:nogroup /usr/bin/searchd --console --config /etc/sphinxsearch/sphinx.conf --pidfile=/var/run/sphinxsearch/searchd.pid
+    exec gosu nobody:nogroup /usr/bin/searchd --console --config /etc/sphinxsearch/sphinx.conf --pidfile /var/run/sphinxsearch/searchd.pid
 fi
 
 if [ "$1" = 'index' ]; then
