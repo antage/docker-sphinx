@@ -17,7 +17,9 @@ if [ "$1" = 'index' ]; then
         indexes="${@:2}"
     fi
     if [ -f /var/run/sphinxsearch/searchd.pid ]; then
-        args="--rotate"
+        args="--rotate --config /etc/sphinxsearch/sphinx.conf"
+    else
+        args="--config /etc/sphinxsearch/sphinx.conf"
     fi
     echo "Start full indexing."
     exec gosu nobody:nogroup /usr/bin/indexer $args $indexes

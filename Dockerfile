@@ -7,6 +7,7 @@ RUN \
         curl \
         ca-certificates \
         gosu \
+        libmariadbclient18 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && rm /var/log/dpkg.log \
@@ -14,7 +15,8 @@ RUN \
     && chmod 755 /usr/local/bin/confd \
     && mkdir -p /etc/confd/conf.d \
     && mkdir -p /etc/confd/templates \
-    && touch /etc/confd/confd.toml
+    && touch /etc/confd/confd.toml \
+    && ln -s libmariadbclient.so.18 /usr/lib/x86_64-linux-gnu/libmariadb.so
 
 EXPOSE 9312
 EXPOSE 9306
